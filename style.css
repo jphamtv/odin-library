@@ -1,0 +1,19 @@
+/* style.css */
+
+body {
+  width: 960px;
+  margin: auto;
+}
+
+th {
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid gray;
+}
+
+table {
+  margin-top: 40px;
+  max-width: 960px;
+}
