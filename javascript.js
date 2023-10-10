@@ -1,13 +1,16 @@
 // javascript.js
 
+// Set the library data structure to store books
 let myLibrary = [
   { id: 1, title: 'Lonesome Dove', author: 'Larry McMurtry', pages: 960, status: 'reading' },
   { id: 2, title: 'Atomic Habits', author: 'James Clear', pages: 269, status: 'read' },
   { id: 3, title: 'The Three Body Problem', author: 'Liu Cixin', pages: 557, status: 'not read' },
 ];
 
+// Initialize counter for generating IDs
 let counter = 3;
 
+// Function to generate unique book ID
 function generateUniqueId() {
   counter++;
   return counter;
@@ -45,6 +48,7 @@ function addBookToLibrary(author, title, pages, status) {
   document.querySelector('#pages').value = '';
   document.querySelector('#status').value = '';
 
+  dialog.close();
 }
 
 const formElement = document.querySelector('#add-book')
@@ -162,11 +166,6 @@ showFormButton.addEventListener("click", () => {
 
 // "Close (x)" button closes the dialog
 closeFormButton.addEventListener("click", () => {
-  dialog.close();
-});
-
-// "Submit" button closes the dialog
-closeFormButton2.addEventListener("click", () => {
   dialog.close();
 });
 
