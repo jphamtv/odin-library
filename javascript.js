@@ -42,12 +42,13 @@ function addBookToLibrary(author, title, pages, status) {
   // Update the UI
   displayLibrary();
 
-  // Clear the form fields, or close the dialog window
+  // Clear the form fields
   document.querySelector('#title').value = '';
   document.querySelector('#author').value = '';
   document.querySelector('#pages').value = '';
   document.querySelector('#status').value = '';
 
+  // Close the dialog modal
   dialog.close();
 }
 
@@ -63,7 +64,7 @@ formElement.addEventListener('submit', function (event) {
   const pages = document.querySelector('#pages').value;
   const status = document.querySelector('#status').value;
 
-  // Create a new book object
+  // Create a new book object and add to library
   addBookToLibrary(author, title, pages, status);
 })
 
@@ -78,10 +79,9 @@ function displayLibrary() {
 
   // Loop through library data and update the table rows
   myLibrary.forEach(book => {
-    // Check if a row already exists based on this book's title
     const newRow = document.createElement('tr');
 
-    // Set a unique identifier
+    // Set the unique identifier to match the book's unique ID
     newRow.dataset.bookId = book.id;
 
     // HTML structure of the new row
@@ -116,13 +116,13 @@ function displayLibrary() {
       // Update the book's status
       selectedBook.status = selectedStatus;
 
-      // Call displayLibrary to update the UI
+      // Call displayLibrary() to update the UI
       displayLibrary();
     })
-
   });
 }
 
+// Initialize the UI with some books
 displayLibrary();
 
 // Attach the event listeners for remove buttons when the page loads
@@ -143,13 +143,14 @@ function attachRemoveButtonListeners() {
   });
 }
 
-// Function to remove by by ID
+// Function to remove a book from the library by its unique ID
 function removeBookById(bookId) {
   myLibrary = myLibrary.filter(book => book.id !== bookId);
 
   // Update the UI after removing the book
   displayLibrary();
 
+  // Reattach event listeners for remove buttons
   attachRemoveButtonListeners();
 }
 
@@ -157,7 +158,6 @@ function removeBookById(bookId) {
 const dialog = document.querySelector("dialog");
 const showFormButton = document.querySelector(".add-book-button");
 const closeFormButton = document.querySelector(".close-button");
-const closeFormButton2 = document.querySelector(".add-book-to-library");
 
 // "Add Book" button opens the dialog modally
 showFormButton.addEventListener("click", () => {
