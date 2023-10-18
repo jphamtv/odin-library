@@ -17,14 +17,15 @@ function generateUniqueId() {
 }
 
 
-// Constructor function for creating Book objects
-function Book(id, author, title, pages, status) {
-  // Assigning properties to the object using 'this'
-  this.id = id;
-  this.author = author
-  this.title = title
-  this.pages = pages
-  this.status = status
+// Class for creating books
+class Book {
+  constructor(id, author, title, pages, status) {
+    this.id = id;
+    this.author = author;
+    this.title = title;
+    this.pages = pages;
+    this.status = status;
+  }
 }
 
 
@@ -35,7 +36,7 @@ function addBookToLibrary(author, title, pages, status) {
 
   // Create a new book object using the Book constructor
   const book = new Book(uniqueId, author, title, pages, status);
-
+  
   // Add the new book to the library data structure
   myLibrary.push(book);
 
